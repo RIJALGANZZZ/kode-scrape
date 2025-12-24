@@ -3,7 +3,7 @@ cat << 'EOF' > README.md
 
 # ✨ scrape-primbon
 
-<img src="https://files.catbox.moe/upcruu.jpg" width="300"/>
+<img src="https://files.catbox.moe/x7emfw.jpeg" width="300"/>
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=26&duration=2800&pause=1200&color=FF69B4&center=true&vCenter=true&width=700&lines=Rumahmu+dimana%3F;Gua+mau+kesana;Disana+ada+siapa%3F;Kalo+sepi+main+sama+gua;Ah%2C+atas+bawah+cantik;Huh%2C+putar+badan+dikit;Ah%2C+goyang+tipis-tipis" />
 
@@ -48,25 +48,25 @@ primbon.nomer_hoki('6288292024190').then(console.log);
 primbon.tafsir_mimpi('pipis').then(console.log);
 
 💕 Ramalan Jodoh  
-primbon.ramalan_jodoh('Dika','7','7','2005','Novia','1','12','2004').then(console.log);
+primbon.ramalan_jodoh('Rijalganzz','7','7','2005','Novia','1','12','2004').then(console.log);
 
 🏝️ Ramalan Jodoh Bali  
-primbon.ramalan_jodoh_bali('Dika','7','7','2005','Novia','1','12','2004').then(console.log);
+primbon.ramalan_jodoh_bali('Rijalganzz','7','7','2005','Novia','1','12','2004').then(console.log);
 
 💍 Ramalan Suami Istri  
-primbon.suami_istri('Dika','7','7','2005','Novia','1','12','2004').then(console.log);
+primbon.suami_istri('Rijalganzz','7','7','2005','Novia','1','12','2004').then(console.log);
 
 💌 Ramalan Cinta  
-primbon.ramalan_cinta('Dika','7','7','2005','Novia','1','12','2004').then(console.log);
+primbon.ramalan_cinta('Rijalganzz','7','7','2005','Novia','1','12','2004').then(console.log);
 
 📝 Arti Nama  
-primbon.arti_nama('Dika').then(console.log);
+primbon.arti_nama('Rijalganzz').then(console.log);
 
 ✅ Kecocokan Nama  
-primbon.kecocokan_nama('Dika','7','7','2005').then(console.log);
+primbon.kecocokan_nama('Rijalganzz','7','7','2005').then(console.log);
 
 ❤️ Kecocokan Nama Pasangan  
-primbon.kecocokan_nama_pasangan('Dika','Novia').then(console.log);
+primbon.kecocokan_nama_pasangan('Rijalganzz','Novia').then(console.log);
 
 📅 Ramalan Tanggal Jadian Pernikahan  
 primbon.tanggal_jadian_pernikahan('7','6','2019').then(console.log);
