@@ -1,6 +1,6 @@
 {
   "name": "scrape-primbon-rijalganzz",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Scrape By Rijalganzz",
   "main": "index.js",
   "scripts": {
