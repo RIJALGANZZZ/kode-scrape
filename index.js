@@ -54,52 +54,6 @@ class Primbon {
             })
         })
     }
-    const FSaver = {
-  config: {
-    base: 'https://fsaver.net',
-    agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36'
-  },
-
-  async download(videoUrl) {
-    try {
-      if (!videoUrl) {
-        return { success: false, message: 'URL is required' }
-      }
-
-      const fetchUrl = `${this.config.base}/download/?url=${encodeURIComponent(videoUrl)}`
-      const { data } = await axios.get(fetchUrl, {
-        headers: {
-          'User-Agent': this.config.agent,
-          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-          'Referer': 'https://fsaver.net/'
-        },
-        timeout: 15000
-      })
-
-      const $ = cheerio.load(data)
-      const videoSrc = $('.video__item').attr('src')
-
-      if (!videoSrc) {
-        return { success: false, message: 'Video tidak ditemukan / private' }
-      }
-
-      const videoUrlFinal = videoSrc.startsWith('http')
-        ? videoSrc
-        : this.config.base + videoSrc
-
-      return {
-        success: true,
-        payload: {
-          source: videoUrl,
-          video_url: videoUrlFinal,
-          format: 'mp4'
-        }
-      }
-    } catch (e) {
-      return { success: false, message: e.message }
-    }
-  }
-}
 
     async tafsir_mimpi(value) {
         return new Promise((resolve, reject) => {
@@ -167,69 +121,6 @@ class Primbon {
             })
         })
     }
-    
-    async function igscrapeGet(url) {
-  try {
-    const endpoint = 'https://igram.website/content.php?url=' + encodeURIComponent(url)
-    const { data } = await axios.get(endpoint, {
-      headers: {
-        authority: 'igram.website',
-        accept: '*/*',
-        'accept-language': 'id-ID,id;q=0.9',
-        referer: 'https://igram.website/',
-        'sec-ch-ua': '"Chromium";v="139", "Not;A=Brand";v="99"',
-        'sec-ch-ua-mobile': '?1',
-        'sec-ch-ua-platform': '"Android"',
-        'user-agent': 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36'
-      },
-      timeout: 15000
-    })
-    return data
-  } catch (e) {
-    return null
-  }
-}
-
-function parseHtml(html) {
-  const clean = html.replace(/\n|\t/g, '')
-  const video = [...clean.matchAll(/<source src="([^"]+)/g)].map(v => v[1])
-  let images = [...clean.matchAll(/<img src="([^"]+)/g)].map(v => v[1])
-  if (images.length > 0) images = images.slice(1)
-
-  const capRaw = clean.match(/<p class="text-sm"[^>]*>(.*?)<\/p>/)
-  const caption = capRaw ? capRaw[1].replace(/<br ?\/?>/g, '\n') : null
-
-  const likes = clean.match(/far fa-heart"[^>]*><\/i>\s*([^<]+)/)
-  const comments = clean.match(/far fa-comment"[^>]*><\/i>\s*([^<]+)/)
-  const time = clean.match(/far fa-clock"[^>]*><\/i>\s*([^<]+)/)
-
-  return {
-    is_video: video.length > 0,
-    videos: video,
-    images,
-    caption,
-    likes: likes ? likes[1] : null,
-    comments: comments ? comments[1] : null,
-    time: time ? time[1] : null
-  }
-}
-
-async function instagram(url) {
-  const raw = await igscrapeGet(url)
-  if (!raw || !raw.html) return null
-
-  const parsed = parseHtml(raw.html)
-
-  return {
-    type: parsed.is_video ? 'video' : 'image',
-    video_url: parsed.is_video ? parsed.videos[0] : null,
-    images: parsed.is_video ? [] : parsed.images,
-    caption: parsed.caption,
-    likes: parsed.likes,
-    comments: parsed.comments,
-    time: parsed.time
-  }
-}
 
     async ramalan_jodoh_bali(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2) {
         return new Promise((resolve, reject) => {
